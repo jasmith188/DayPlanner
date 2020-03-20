@@ -2,7 +2,8 @@ $(document).ready(function () {
     //global array
     var K = ["nIne", "tEn", "eLeven", "tWelve", "oNe", "tWo", "tHree", "fOur", "fIve"];
     var Area = ["#text9", "#text10", "#text11", "#text12", "#text1", "#text2", "#text3", "#text4", "#text5"];
-
+    console.log(hour);
+    
     //SEtting Time
     $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'))
 
@@ -15,15 +16,15 @@ $(document).ready(function () {
     for (var i = 0; i < array.length; index++) {
 
         var data = $(Area[i]).attr("data-time");
-        console.log(data);
+        data = parseInt(data);
 
         if (hour < data) {
             $(Area[i]).addClass("col-md-10 future description")
         }
-        if (hour < data) {
+        if (hour === data) {
             $(Area[i]).addClass("col-md-10 present description")
         }
-        if (hour < data) {
+        if (hour > data) {
             $(Area[i]).addClass("col-md-10 past description")
         }
 
