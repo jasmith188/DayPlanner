@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //global array
-    var K = ["nine", "ten", "eleven", "twelve", "one", "two", "three", "four", "five"];
-    var Area = ["#text9", "#text10", "#text11", "#text12", "#text1", "#text2", "#text3", "#text4", "#text5"];
+    var d = ["nine", "ten", "eleven", "twelve", "one", "two", "three", "four", "five"];
+    var Place = ["#text9", "#text10", "#text11", "#text12", "#text1", "#text2", "#text3", "#text4", "#text5"];
     console.log(hour);
     
     //SEtting Time
@@ -14,27 +14,27 @@ $(document).ready(function () {
     //variable to help retrieve time in dom
         var today = new Date();
         var hour = today.getHours();
-    //use yhr loop to go over all the text areas on tht html
-    for (var i = 0; i < Area.length; i++) {
+    //use yhr loop to go over all the text places on tht html
+    for (var i = 0; i < Place.length; i++) {
         //set a data time into  avarabe
-        var data = $(Area[i]).attr("data-time");
+        var data = $(Place[i]).attr("data-time");
       //change the string to a number to use in in an if statement  
         data = parseInt(data);
         //future if
         if (hour < data) {
-            $(Area[i]).addClass("col-md-10 future description")
+            $(Place[i]).addClass("col-md-10 future description")
         }
         //present if 
         if (hour === data) {
-            $(Area[i]).addClass("col-md-10 present description")
+            $(Place[i]).addClass("col-md-10 present description")
         }
         // past if
         if (hour > data) {
-            $(Area[i]).addClass("col-md-10 past description")
+            $(Place[i]).addClass("col-md-10 past description")
         }
 
     }
-    //adding n event listener to text content
+    
 
     $(".saveBtn").on("click", function () {
         //get nearby values using sibling method:
@@ -44,16 +44,16 @@ $(document).ready(function () {
         localStorage.setItem(time, value);
     })
 
-    //$("#text9").textLocalStorage.getIem("nIne"));
+    
 
     //for loop will match the arraysabove and link them via key method and then place them back on the screen.
-    for (let i = 0; i < K.length; i++) {
-        //cool gets all the sets in local storage
-        console.log(localStorage.getItem(K[i]));
+    for (let i = 0; i < d.length; i++) {
+        //ready gets all the sets in local storage
+        console.log(localStorage.getItem(d[i]));
         //if local storage is null then loop will skip
-        var cool = localStorage.getItem(K[i]);
-        if (cool != null) {
-            $(Area[i]).text(cool);
+        var ready = localStorage.getItem(d[i]);
+        if (ready != null) {
+            $(Place[i]).text(ready);
         }
 
     }
